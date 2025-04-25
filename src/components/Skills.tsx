@@ -1,28 +1,28 @@
 
 import { Card, CardContent } from './ui/card';
-import { Code, Terminal, Shield, Database } from 'lucide-react';
+import { Code, Database, Layers, Terminal } from 'lucide-react';
 
 const Skills = () => {
   const skills = [
     {
       icon: Code,
-      title: "Programming",
-      description: "Python, Java, Shell Scripting",
+      title: "Python & Programming",
+      description: "Python, Basic C & C++, Python Libraries",
     },
     {
       icon: Terminal,
-      title: "System Administration",
-      description: "Linux, Command Line Tools",
-    },
-    {
-      icon: Shield,
-      title: "Security",
-      description: "System Security, Cryptography",
+      title: "Machine Learning",
+      description: "Deep Learning, Neural Networks, CNN",
     },
     {
       icon: Database,
-      title: "AI & ML",
-      description: "Deep Learning, CNN, VGG16",
+      title: "Data Science",
+      description: "Data Analysis, Visualization, Statistics",
+    },
+    {
+      icon: Layers,
+      title: "Tools & Technologies",
+      description: "Git, Linux, Shell Scripting",
     },
   ];
 
