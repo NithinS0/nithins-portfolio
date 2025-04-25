@@ -10,14 +10,15 @@ const Resume = () => {
   const handleDownload = () => {
     setIsDownloading(true);
     
-    // The URL should point to where you've uploaded your resume
-    // For example, you could host it on a cloud storage service
-    const resumeUrl = 'https://example.com/Nithin_S_Resume.pdf';
+    // Convert Google Drive view URL to direct download URL
+    // Original: https://drive.google.com/file/d/1asViNpRpA7tSZtkHBrS1lPn071vIEvEF/view?usp=sharing
+    // Extract file ID: 1asViNpRpA7tSZtkHBrS1lPn071vIEvEF
+    const fileId = '1asViNpRpA7tSZtkHBrS1lPn071vIEvEF';
+    const resumeUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
     
     // Create a temporary link element to trigger the download
     const link = document.createElement('a');
     link.href = resumeUrl;
-    link.target = '_blank';
     link.download = 'Nithin_S_Resume.pdf';
     document.body.appendChild(link);
     
