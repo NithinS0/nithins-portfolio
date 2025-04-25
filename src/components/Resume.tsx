@@ -1,33 +1,36 @@
 
 import { Button } from './ui/button';
 import { FileDown } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { toast } from 'sonner';
 
 const Resume = () => {
-  const [resumeUrl, setResumeUrl] = useState<string | null>(null);
-
-  useEffect(() => {
-    // Dynamically import the resume file
-    const importResume = async () => {
-      try {
-        const resumeModule = await import('../assets/Nithin_S_Resume.pdf');
-        setResumeUrl(resumeModule.default);
-      } catch (error) {
-        console.error('Resume file not found', error);
-      }
-    };
-
-    importResume();
-  }, []);
+  const [isDownloading, setIsDownloading] = useState(false);
 
   const handleDownload = () => {
-    if (resumeUrl) {
-      const link = document.createElement('a');
-      link.href = resumeUrl;
-      link.download = 'Nithin_S_Resume.pdf';
-      document.body.appendChild(link);
+    setIsDownloading(true);
+    
+    // The URL should point to where you've uploaded your resume
+    // For example, you could host it on a cloud storage service
+    const resumeUrl = 'https://example.com/Nithin_S_Resume.pdf';
+    
+    // Create a temporary link element to trigger the download
+    const link = document.createElement('a');
+    link.href = resumeUrl;
+    link.target = '_blank';
+    link.download = 'Nithin_S_Resume.pdf';
+    document.body.appendChild(link);
+    
+    try {
       link.click();
+      toast.success('Resume download started');
+    } catch (error) {
+      console.error('Download failed', error);
+      toast.error('Failed to download resume');
+    } finally {
+      // Clean up the link element
       document.body.removeChild(link);
+      setIsDownloading(false);
     }
   };
 
@@ -38,8 +41,12 @@ const Resume = () => {
         <p className="text-lg text-gray-700 mb-8">
           Download my resume to learn more about my education, experience, and skills.
         </p>
-        <Button onClick={handleDownload} className="group">
-          Download Resume
+        <Button 
+          onClick={handleDownload} 
+          className="group"
+          disabled={isDownloading}
+        >
+          {isDownloading ? 'Downloading...' : 'Download Resume'}
           <FileDown className="ml-2 group-hover:-translate-y-1 transition-transform" size={20} />
         </Button>
       </div>
