@@ -9,7 +9,7 @@ const About = () => {
         <Card className="bg-white/50 backdrop-blur-sm">
           <CardContent className="p-6">
             <p className="text-lg text-gray-700 leading-relaxed">
-              I'm an Artificial Intelligence student with a strong foundation in Python, Linux, and system security. 
+              I'm an Artificial Intelligence student with a strong foundation in Python, Machine Learing and Data Science. 
               My passion lies in developing secure and efficient systems that make a positive impact. 
               Through my academic journey, I've gained extensive experience in shell scripting, 
               deep learning, and building user-friendly applications.
